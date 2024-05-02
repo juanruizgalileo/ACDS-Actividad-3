@@ -1,10 +1,10 @@
 <?php
 
 function hacerFact($a, $b, $c) {
-    $de = $c * (10 / 100);
-    $st = $c - $de;
-    $iva = $st * 0.12;
-    $t = $st + $iva;
+    $descuento = $c * (10 / 100);
+    $subtotal = $c - $descuento;
+    $iva = $subtotal * 0.12;
+    $total = $subtotal + $iva;
     
     $resultado = "FACTURA\n";
     $resultado .= "Nombre: $a\n";
@@ -12,7 +12,7 @@ function hacerFact($a, $b, $c) {
     foreach ($b as $b1) {
         $resultado .= "- $b1\n";
     }
-    $resultado .= "Total: \$$t\n";
+    $resultado .= "Total: \$total\n";
 
     // Devuelve la factura
     return $resultado;
