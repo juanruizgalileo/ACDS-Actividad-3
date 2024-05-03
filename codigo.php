@@ -1,6 +1,6 @@
 <?php
 
-function hacerFact($a, $b, $c) {
+function generarFactura($a, $b, $c) {
     $de = $c * (10 / 100);
     $st = $c - $de;
     $iva = $st * 0.12;
@@ -18,13 +18,14 @@ function hacerFact($a, $b, $c) {
     return $resultado;
 }
 
-// Datos del cliente y los productos comprados
-$z = "Juan";
-$y = ["Camisa", "Pantalón", "Zapatos"];
-$x = 1000;
+// Parametros
+$cliente = "Juan";
+$productos = ["Camisa", "Pantalón", "Zapatos"];
+$costo = 1000;
 
-$fa = haceFact($z, $y, $x);
+// Generar factura
+$factura = generarFactura($cliente, $productos, $costo);
 
-echo $fa;
+echo $factura;
 
 ?>
