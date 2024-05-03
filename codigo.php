@@ -1,11 +1,17 @@
 <?php
+function hacerFactura($nombreCliente, $productos, $montoTotal) { //
+    $descuento = $montoTotal * 0.10;  // 10% de descuento
+    $subtotal = $montoTotal - $descuento;
+    $iva = $subtotal * 0.12;  // 12% de IVA
+    $total = $subtotal + $iva;
 
+    
 function hacerFact($a, $b, $c) {
     $de = $c * (10 / 100);
     $st = $c - $de;
     $iva = $st * 0.12;
     $t = $st + $iva;
-    
+   
     $resultado = "FACTURA\n";
     $resultado .= "Nombre: $a\n";
     $resultado .= "Productos:\n";
