@@ -1,18 +1,18 @@
 <?php
 
-function hacerFact($a, $b, $c) {
-    $de = $c * (10 / 100);
-    $st = $c - $de;
-    $iva = $st * 0.12;
-    $t = $st + $iva;
+function hacerFact($name, $products, $price) {
+    $descuento = $price * (10 / 100);
+    $valorNeto = $price - $descuento;
+    $iva = $valorNeto * 0.12;
+    $total = $valorNeto + $iva;
     
     $resultado = "FACTURA\n";
-    $resultado .= "Nombre: $a\n";
+    $resultado .= "Nombre: $name\n";
     $resultado .= "Productos:\n";
-    foreach ($b as $b1) {
-        $resultado .= "- $b1\n";
+    foreach ($products as $item) {
+        $resultado .= "- $item\n";
     }
-    $resultado .= "Total: \$$t\n";
+    $resultado .= "Total: \$total\n";
 
     // Devuelve la factura
     return $resultado;
