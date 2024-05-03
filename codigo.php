@@ -19,11 +19,11 @@ function hacerFact($a, $b, $c) {
 }
 
 // Datos del cliente y los productos comprados
-$z = "Juan";
-$y = ["Camisa", "Pantalón", "Zapatos"];
-$x = 1000;
+$nombre_cliente = "Juan";
+$productos_comprados = ["Camisa", "Pantalón", "Zapatos"];
+$precio_total_sin_impuestos = 1000;
 
-$fa = haceFact($z, $y, $x);
+$fa = haceFact($nombre_cliente, $productos_comprados, $precio_total_sin_impuestos);
 
 echo $fa;
 
