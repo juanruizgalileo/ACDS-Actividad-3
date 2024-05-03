@@ -1,30 +1,29 @@
 <?php
 
-function hacerFact($a, $b, $c) {
-    $de = $c * (10 / 100);
-    $st = $c - $de;
-    $iva = $st * 0.12;
-    $t = $st + $iva;
+function crearFactura($nombreCliente, $productos, $montoTotal) {
+    $descuento = $montoTotal * 0.10;
+    $subtotal = $montoTotal - $descuento;
+    $iva = $subtotal * 0.12;
+    $total = $subtotal + $iva;
     
     $resultado = "FACTURA\n";
-    $resultado .= "Nombre: $a\n";
+    $resultado .= "Nombre: " . htmlspecialchars($nombreCliente) . "\n";
     $resultado .= "Productos:\n";
-    foreach ($b as $b1) {
-        $resultado .= "- $b1\n";
+    foreach ($productos as $producto) {
+        $resultado .= "- " . htmlspecialchars($producto) . "\n";
     }
-    $resultado .= "Total: \$$t\n";
+    $resultado .= "Total: $" . number_format($total, 2) . "\n";
 
-    // Devuelve la factura
     return $resultado;
 }
 
 // Datos del cliente y los productos comprados
-$nombre_cliente = "Juan";
-$productos_comprados = ["Camisa", "Pantalón", "Zapatos"];
-$precio_total_sin_impuestos = 1000;
+$nombreCliente = "Juan";
+$productos = ["Camisa", "Pantalón", "Zapatos"];
+$montoTotal = 1000;
 
-$fa = haceFact($nombre_cliente, $productos_comprados, $precio_total_sin_impuestos);
+$factura = crearFactura($nombreCliente, $productos, $montoTotal);
 
-echo $fa;
+echo $factura;
 
 ?>
