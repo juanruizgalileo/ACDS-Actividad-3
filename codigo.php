@@ -16,10 +16,10 @@ function hacerFact($a, $b, $c) {
     // Calcular el 10% de descuento
     $de = $c * (10 / 100);
 
-    // Subtotal después de aplicar el descuento
+    
     $st = $c - $de;
 
-    // Calcular Iva(12% total)
+  
     $iva = $st * 0.12;
 
     //Calcular el total final (subtotal + IVA)
@@ -44,25 +44,25 @@ function hacerFact($a, $b, $c) {
 
 
 function consultarCliente($nombreCliente) {
-    // Datos de conexión a la base de datos
+    
     $host = "localhost";
     $usuario = "root";
     $contrasena = "1234"; 
     $baseDatos = "tienda";
 
-    // Crear la conexión
+    
     $conexion = new mysqli($host, $usuario, $contrasena, $baseDatos);
 
-    // Verificar la conexión
+    
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
 
-    // Realizar la consulta
+    
     $sql = "SELECT * FROM clientes WHERE nombre = '$nombreCliente'";
     $resultado = $conexion->query($sql);
 
-     // Mostrar resultados si se encontró el cliente
+    
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_assoc()) {
             echo "Cliente encontrado: " . $fila["nombre"] . " - Email: " . $fila["email"] . "\n";
@@ -71,7 +71,6 @@ function consultarCliente($nombreCliente) {
         echo "Cliente no encontrado.\n";
     }
 
-    // Cerrar la conexión
     $conexion->close();
 }
 
