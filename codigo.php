@@ -50,7 +50,7 @@ function consultarCliente($nombreCliente) {
 
 // Datos del cliente y los productos comprados
 $z = "Juan";
-$y = ["Camisa", "Pantalón", "Zapatos"];
+$productosComprados = ["Camisa", "Pantalón", "Zapatos"];
 $x = 1000;
 
 consultarCliente($z);
