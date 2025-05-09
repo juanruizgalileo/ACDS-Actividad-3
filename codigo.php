@@ -64,7 +64,7 @@ $x = 1000;
 
 consultarCliente($z);
 
-$fa = haceFact($z, $y, $x);
+$fa = hacerFact($z, $y, $x);
 
 echo $fa;
 
