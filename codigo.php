@@ -49,9 +49,9 @@ function consultarCliente($nombreCliente) {
 
 
 // Datos del cliente y los productos comprados
-$z = "Juan";
-$y = ["Camisa", "Pantalón", "Zapatos"];
-$x = 1000;
+$nombre  = "Juan";
+$productos  = ["Camisa", "Pantalón", "Zapatos"];
+$subtotal  = 1000;
 
 consultarCliente($z);
 
