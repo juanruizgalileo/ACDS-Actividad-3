@@ -21,14 +21,7 @@ function hacerFact($a, $b, $c) {
     return $resultado;
 }
 
-function consultarCliente($nombreCliente) {
-    $host = "localhost";
-    $usuario = "root";
-    $contrasena = "1234"; 
-    $baseDatos = "tienda";
-
-    $conexion = new mysqli($host, $usuario, $contrasena, $baseDatos);
-
+function consultarCliente($nombreCliente, $conexion) {
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
@@ -52,20 +45,27 @@ function consultarCliente($nombreCliente) {
     } else {
         echo "Cliente no encontrado.\n";
     }
-
-    $conexion->close();
 }
 
+// Crear conexion a la DB.
+$host = "localhost";
+$usuario = "root";
+$contrasena = "1234"; 
+$baseDatos = "tienda";
+
+$conexion = new mysqli($host, $usuario, $contrasena, $baseDatos);
 
 // Datos del cliente y los productos comprados
 $z = "Juan";
 $productosComprados = ["Camisa", "Pantalón", "Zapatos"];
 $x = 1000;
 
-consultarCliente($z);
+consultarCliente($z, $conexion);
 
 $fa = hacerFact($z, $y, $x);
 
 echo $fa;
+
+$conexion->close();
 
 ?>
