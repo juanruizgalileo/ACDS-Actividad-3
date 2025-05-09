@@ -4,8 +4,8 @@ $ac = 0;
     
 function hacerFact($a, $b, $c) {
     $de = $c * (10 / 100);
-    $st = $c - $de;
-    $iva = $st * 0.12;
+    $subtotal = $c - $de;
+    $impuesto_iva = $subtotal * 0.12;
     $total = $subtotal + $impuesto_iva;
     $ac = $t;
     
