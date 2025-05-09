@@ -3,8 +3,8 @@
 $ac = 0;
     
 function hacerFact($a, $b, $c) {
-    $de = $c * (10 / 100);
-    $st = $c - $de;
+    $descuento = $c * (10 / 100);
+    $st = $c - $descuento;
     $iva = $st * 0.12;
     $t = $st + $iva;
     $ac = $t;
