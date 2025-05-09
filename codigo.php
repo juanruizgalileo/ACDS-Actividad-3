@@ -33,9 +33,13 @@ function consultarCliente($nombreCliente) {
         die("Error de conexión: " . $conexion->connect_error);
     }
 
-    $sql = "SELECT * FROM clientes WHERE nombre = '$nombreCliente'";
-    $resultado = $conexion->query($sql);
+    // Consulta segura con prepared statement
+    $stmt = $conexion->prepare("SELECT * FROM clientes WHERE nombre = ?");
+    $stmt->bind_param("s", $nombreCliente);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
+    
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_assoc()) {
             echo "Cliente encontrado: " . $fila["nombre"] . " - Email: " . $fila["email"] . "\n";
