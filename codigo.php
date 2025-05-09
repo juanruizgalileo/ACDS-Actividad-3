@@ -1,61 +1,33 @@
 <?php
 
 $ac = 0;
-    
+
 function hacerFact($a, $b, $c) {
-    $de = $c * (10 / 100);
-    $st = $c - $de;
-    $iva = $st * 0.12;
-    $t = $st + $iva;
-    $ac = $t;
-    
+    $de = $c * (10 / 100);  // Descuento del 10%
+    $st = $c - $de;         // Subtotal después del descuento
+    $iva = $st * 0.12;      // IVA del 12%
+    $t = $st + $iva;        // Total
+    // global $ac; // Si quieres modificar la variable global
+    // $ac = $t;
+
     $resultado = "FACTURA\n";
     $resultado .= "Nombre: $a\n";
     $resultado .= "Productos:\n";
     foreach ($b as $b1) {
         $resultado .= "- $b1\n";
     }
-    $resultado .= "Total: \$$t\n";
+    $resultado .= "Total: $" . number_format($t, 2) . "\n";
 
-    // Devuelve la factura
     return $resultado;
 }
-
-function consultarCliente($nombreCliente) {
-    $host = "localhost";
-    $usuario = "root";
-    $contrasena = "1234"; 
-    $baseDatos = "tienda";
-
-    $conexion = new mysqli($host, $usuario, $contrasena, $baseDatos);
-
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
-
-    $sql = "SELECT * FROM clientes WHERE nombre = '$nombreCliente'";
-    $resultado = $conexion->query($sql);
-
-    if ($resultado->num_rows > 0) {
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "Cliente encontrado: " . $fila["nombre"] . " - Email: " . $fila["email"] . "\n";
-        }
-    } else {
-        echo "Cliente no encontrado.\n";
-    }
-
-    $conexion->close();
-}
-
 
 // Datos del cliente y los productos comprados
 $z = "Juan";
 $y = ["Camisa", "Pantalón", "Zapatos"];
 $x = 1000;
 
-consultarCliente($z);
-
-$fa = haceFact($z, $y, $x);
+// Corregido el nombre de la función
+$fa = hacerFact($z, $y, $x);
 
 echo $fa;
 
