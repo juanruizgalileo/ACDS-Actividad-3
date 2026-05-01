@@ -262,6 +262,7 @@ echo $totalCamisa;
 $i = 0;
 while ($i < count($inventarioCache)) {
     echo $inventarioCache[$i]["nombre"];
+    $i++;
 }
 
 $ultimaOperacion = null;
