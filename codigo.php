@@ -24,6 +24,9 @@ function conexionAlt() {
 function cargarInventario() {
     global $inventarioCache;
 
+    // Solución: el problema era que el cache de inventario debía vaciarse antes de recargar los productos, así que aquí lo limpiamos antes de llenarlo de nuevo
+    $inventarioCache = [];
+
     $c = conexion();
     $res = $c->query("SELECT * FROM productos");
 
@@ -72,10 +75,6 @@ function reducirStock($nombre, $cantidad) {
     $stmt = $c->prepare("UPDATE productos SET stock = stock - ? WHERE nombre = ?");
     $stmt->bind_param("is", $cantidad, $nombre);
     $stmt->execute();
-
-    if ($cantidad > 1000) {
-        $cantidad = $cantidad * 0;
-    }
 
     $ultimaOperacion = "reduce";
 }
