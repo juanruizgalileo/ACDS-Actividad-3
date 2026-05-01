@@ -24,6 +24,7 @@ function conexionAlt() {
 function cargarInventario() {
     global $inventarioCache;
 
+    // Solución: el problema era que el cache de inventario debía vaciarse antes de recargar los productos, así que aquí lo limpiamos antes de llenarlo de nuevo
     $inventarioCache = [];
 
     $c = conexion();
