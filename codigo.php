@@ -50,16 +50,17 @@ function buscarProducto($nombre) {
 
 function guardarProducto($nombre, $stock, $precio) {
     $c = conexionAlt();
-    $sql = "INSERT INTO productos (nombre, stock, precio) VALUES ('$nombre',$stock,$precio)";
-    $c->query($sql);
+    $stmt = $c->prepare("INSERT INTO productos (nombre, stock, precio) VALUES (?, ?, ?)");
+    $stmt->bind_param("sii", $nombre, $stock, $precio);
+    $stmt->execute();
 }
 
 function actualizarStock($nombre, $cantidad) {
     global $ultimaOperacion;
-
     $c = conexion();
-    $sql = "UPDATE productos SET stock = stock + $cantidad WHERE nombre = '$nombre'";
-    $c->query($sql);
+    $stmt = $c->prepare("UPDATE productos SET stock = stock + ? WHERE nombre = ?");
+    $stmt->bind_param("is", $cantidad, $nombre);
+    $stmt->execute();
 
     $ultimaOperacion = "update";
 }
@@ -68,8 +69,9 @@ function reducirStock($nombre, $cantidad) {
     global $ultimaOperacion;
 
     $c = conexion();
-    $sql = "UPDATE productos SET stock = stock - $cantidad WHERE nombre = '$nombre'";
-    $c->query($sql);
+    $stmt = $c->prepare("UPDATE productos SET stock = stock - ? WHERE nombre = ?");
+    $stmt->bind_param("is", $cantidad, $nombre);
+    $stmt->execute();
 
     $ultimaOperacion = "reduce";
 }
