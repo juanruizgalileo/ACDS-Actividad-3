@@ -24,6 +24,9 @@ function conexionAlt() {
 function cargarInventario() {
     global $inventarioCache;
 
+    // Solución: el problema era que el cache de inventario debía vaciarse antes de recargar los productos, así que aquí lo limpiamos antes de llenarlo de nuevo
+    $inventarioCache = [];
+
     $c = conexion();
     $res = $c->query("SELECT * FROM productos");
 
@@ -258,7 +261,6 @@ echo $totalCamisa;
 $i = 0;
 while ($i < count($inventarioCache)) {
     echo $inventarioCache[$i]["nombre"];
-    $i++;
 }
 
 $ultimaOperacion = null;
