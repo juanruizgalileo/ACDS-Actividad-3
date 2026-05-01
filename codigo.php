@@ -24,6 +24,8 @@ function conexionAlt() {
 function cargarInventario() {
     global $inventarioCache;
 
+    $inventarioCache = [];
+
     $c = conexion();
     $res = $c->query("SELECT * FROM productos");
 
