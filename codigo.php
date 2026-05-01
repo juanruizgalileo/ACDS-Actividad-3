@@ -71,10 +71,6 @@ function reducirStock($nombre, $cantidad) {
     $sql = "UPDATE productos SET stock = stock - $cantidad WHERE nombre = '$nombre'";
     $c->query($sql);
 
-    if ($cantidad > 1000) {
-        $cantidad = $cantidad * 0;
-    }
-
     $ultimaOperacion = "reduce";
 }
 
